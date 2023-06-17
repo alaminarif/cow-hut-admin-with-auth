@@ -1,0 +1,5 @@
+Fri Jun 16 2023  23:1:6 [right meow!] error: Global Error Handler:  ValidationError: name: Path `name` is required.
+Fri Jun 16 2023  23:14:38 [right meow!] error: Global Error Handler:  ValidationError: name: Path `name` is required.
+Fri Jun 16 2023  23:23:9 [right meow!] error: Global Error Handler:  ValidationError: title: Path `title` is required.
+Fri Jun 16 2023  23:24:15 [right meow!] error: Global Error Handler:  ValidationError: title: Path `title` is required.
+Fri Jun 16 2023  23:58:45 [right meow!] error: global Error Handler: Cow validation failed: name: Path `name` is required.

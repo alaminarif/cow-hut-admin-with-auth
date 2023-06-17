@@ -1,0 +1,2 @@
+Fri Jun 16 2023  22:18:43 [right meow!] error: Global Error Handler:  SyntaxError: Unexpected token ' in JSON at position 15
+Fri Jun 16 2023  22:21:38 [right meow!] error: Global Error Handler:  ValidationError: name: Path `name` is required.

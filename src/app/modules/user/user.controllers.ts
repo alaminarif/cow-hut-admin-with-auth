@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
 import catchAsync from '../../../share/catchAsync';
-import httpStatus from 'http-status';
 import sendResponse from '../../../share/sendResponse';
-import { CowServices } from './cow.services';
+import httpStatus from 'http-status';
+import { UserServices } from './user.services';
 
-const createCow = catchAsync(async (req: Request, res: Response) => {
-  const { cow } = req.body;
+const createUser = catchAsync(async (req: Request, res: Response) => {
+  const user = req.body;
   // console.log(user);
 
-  const result = await CowServices.createCows(cow);
+  const result = await UserServices.createUsers(user);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -18,9 +18,9 @@ const createCow = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-// get cow
-const getCows = catchAsync(async (req: Request, res: Response) => {
-  const result = CowServices.getCows();
+// get uses
+const getUsers = catchAsync(async (req: Request, res: Response) => {
+  const result = UserServices.getUsers();
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -29,10 +29,10 @@ const getCows = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-// get single cow
-const getSingleCow = catchAsync(async (req: Request, res: Response) => {
+//  get single user
+const getSingleUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = CowServices.getSingleCow(id);
+  const result = UserServices.getSingleUser(id);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -41,10 +41,10 @@ const getSingleCow = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-// update cow
-const updateCow = catchAsync(async (req: Request, res: Response) => {
+//  update user
+const updateUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = CowServices.updateCow(id);
+  const result = UserServices.getSingleUser(id);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -53,10 +53,10 @@ const updateCow = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-// delete cow
-const deleteCow = catchAsync(async (req: Request, res: Response) => {
+//  delete user
+const deleteUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = CowServices.deleteCow(id);
+  const result = UserServices.deleteUser(id);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -64,11 +64,10 @@ const deleteCow = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
-
-export const CowControllers = {
-  createCow,
-  getCows,
-  getSingleCow,
-  updateCow,
-  deleteCow,
+export const UserController = {
+  createUser,
+  getUsers,
+  getSingleUser,
+  updateUser,
+  deleteUser,
 };

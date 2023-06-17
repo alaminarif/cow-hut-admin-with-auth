@@ -1,0 +1,8 @@
+Fri Jun 16 2023  18:0:39 [right meow!] error: Global Error Handler:  ValidationError: income: Path `income` is required., budget: Path `budget` is required., address: Path `address` is required., name: Path `name` is required., password: Path `password` is required., role: Path `role` is required., phoneNumber: Path `phoneNumber` is required.
+Fri Jun 16 2023  18:2:15 [right meow!] error: Global Error Handler:  ValidationError: income: Path `income` is required., budget: Path `budget` is required., address: Path `address` is required., name: Path `name` is required., password: Path `password` is required., role: Path `role` is required., phoneNumber: Path `phoneNumber` is required.
+Fri Jun 16 2023  18:4:50 [right meow!] error: Global Error Handler:  ValidationError: phoneNumber: Path `phoneNumber` is required.
+Fri Jun 16 2023  18:22:42 [right meow!] error: Global Error Handler:  ValidationError: income: Path `income` is required., budget: Path `budget` is required., address: Path `address` is required., name: Path `name` is required., password: Path `password` is required., role: Path `role` is required., phoneNumber: Path `phoneNumber` is required.
+Fri Jun 16 2023  18:31:13 [right meow!] error: Global Error Handler:  ValidationError: phoneNumber: Path `phoneNumber` is required.
+Fri Jun 16 2023  18:31:30 [right meow!] error: Global Error Handler:  ValidationError: phoneNumber: Path `phoneNumber` is required.
+Fri Jun 16 2023  18:32:25 [right meow!] error: Global Error Handler:  ValidationError: phoneNumber: Path `phoneNumber` is required.
+Fri Jun 16 2023  18:34:4 [right meow!] error: Global Error Handler:  ValidationError: phoneNumber: Path `phoneNumber` is required.
