@@ -7,20 +7,20 @@ const createUsers = async (user: IUser): Promise<IUser | null> => {
 };
 
 const getUsers = async () => {
-  const result = await User.find();
+  const result = await User.find({});
   return result;
 };
 
-const getSingleUser = async (id: string) => {
+const getSingleUser = async (id: string): Promise<IUser | null> => {
   const result = await User.findById(id);
   return result;
 };
 
-const updateUser = async (id: string) => {
+const updateUser = async (id: string): Promise<IUser | null> => {
   const result = await User.findByIdAndUpdate(id);
   return result;
 };
-const deleteUser = async (id: string) => {
+const deleteUser = async (id: string): Promise<IUser | null> => {
   const result = await User.findByIdAndDelete(id);
   return result;
 };

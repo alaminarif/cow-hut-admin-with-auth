@@ -3,28 +3,28 @@ import catchAsync from '../../../share/catchAsync';
 import httpStatus from 'http-status';
 import sendResponse from '../../../share/sendResponse';
 import { CowServices } from './cow.services';
+import { ICow } from './cow.interfaces';
+// import { ICow } from './cow.interfaces';
 
 const createCow = catchAsync(async (req: Request, res: Response) => {
-  const { cow } = req.body;
-  // console.log(user);
-
+  const cow = req.body;
   const result = await CowServices.createCows(cow);
 
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
+  sendResponse<ICow>(res, {
     success: true,
-    message: 'user created successfully  ',
+    statusCode: httpStatus.OK,
+    message: 'Cow created successfully  ',
     data: result,
   });
 });
 
 // get cow
 const getCows = catchAsync(async (req: Request, res: Response) => {
-  const result = CowServices.getCows();
-  sendResponse(res, {
+  const result = await CowServices.getCows();
+  sendResponse<ICow[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'user created successfully  ',
+    message: 'cow retrieved successfully  ',
     data: result,
   });
 });
@@ -32,11 +32,11 @@ const getCows = catchAsync(async (req: Request, res: Response) => {
 // get single cow
 const getSingleCow = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = CowServices.getSingleCow(id);
-  sendResponse(res, {
+  const result = await CowServices.getSingleCow(id);
+  sendResponse<ICow>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'user created successfully  ',
+    message: 'cow retrieved successfully !',
     data: result,
   });
 });
@@ -44,11 +44,12 @@ const getSingleCow = catchAsync(async (req: Request, res: Response) => {
 // update cow
 const updateCow = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = CowServices.updateCow(id);
-  sendResponse(res, {
+  const updateData = req.body;
+  const result = await CowServices.updateCow(id, updateData);
+  sendResponse<ICow>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'user created successfully  ',
+    message: 'Cow updated  is successfully  ',
     data: result,
   });
 });
@@ -56,11 +57,11 @@ const updateCow = catchAsync(async (req: Request, res: Response) => {
 // delete cow
 const deleteCow = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = CowServices.deleteCow(id);
-  sendResponse(res, {
+  const result = await CowServices.deleteCow(id);
+  sendResponse<ICow>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'user created successfully  ',
+    message: 'Cow delete is  successfully  ',
     data: result,
   });
 });

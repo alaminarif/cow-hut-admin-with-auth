@@ -3,16 +3,16 @@ import catchAsync from '../../../share/catchAsync';
 import sendResponse from '../../../share/sendResponse';
 import httpStatus from 'http-status';
 import { UserServices } from './user.services';
+import { IUser } from './user.interfaces';
 
 const createUser = catchAsync(async (req: Request, res: Response) => {
   const user = req.body;
-  // console.log(user);
 
   const result = await UserServices.createUsers(user);
 
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
+  sendResponse<IUser>(res, {
     success: true,
+    statusCode: httpStatus.OK,
     message: 'user created successfully  ',
     data: result,
   });
@@ -20,11 +20,11 @@ const createUser = catchAsync(async (req: Request, res: Response) => {
 
 // get uses
 const getUsers = catchAsync(async (req: Request, res: Response) => {
-  const result = UserServices.getUsers();
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
+  const result = await UserServices.getUsers();
+  sendResponse<IUser[]>(res, {
     success: true,
-    message: 'user created successfully  ',
+    statusCode: httpStatus.OK,
+    message: 'users retrieved successfully  ',
     data: result,
   });
 });
@@ -32,11 +32,11 @@ const getUsers = catchAsync(async (req: Request, res: Response) => {
 //  get single user
 const getSingleUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = UserServices.getSingleUser(id);
-  sendResponse(res, {
+  const result = await UserServices.getSingleUser(id);
+  sendResponse<IUser>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'user created successfully  ',
+    message: 'user retrieved successfully  ',
     data: result,
   });
 });
@@ -44,11 +44,11 @@ const getSingleUser = catchAsync(async (req: Request, res: Response) => {
 //  update user
 const updateUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = UserServices.getSingleUser(id);
-  sendResponse(res, {
+  const result = await UserServices.getSingleUser(id);
+  sendResponse<IUser>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'user created successfully  ',
+    message: 'user updated successfully  ',
     data: result,
   });
 });
@@ -56,11 +56,11 @@ const updateUser = catchAsync(async (req: Request, res: Response) => {
 //  delete user
 const deleteUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = UserServices.deleteUser(id);
-  sendResponse(res, {
+  const result = await UserServices.deleteUser(id);
+  sendResponse<IUser>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'user created successfully  ',
+    message: 'user deleted successfully  ',
     data: result,
   });
 });

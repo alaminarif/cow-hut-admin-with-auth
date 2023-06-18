@@ -2,7 +2,7 @@ import { ICow } from './cow.interfaces';
 import Cow from './cow.model';
 
 // create cow
-const createCows = async (cow: ICow) => {
+const createCows = async (cow: ICow): Promise<ICow | null> => {
   const result = await Cow.create(cow);
   return result;
 };
@@ -13,19 +13,24 @@ const getCows = async () => {
 };
 
 // get Single Cow
-const getSingleCow = async (id: string) => {
+const getSingleCow = async (id: string): Promise<ICow | null> => {
   const result = await Cow.findById(id);
   return result;
 };
 
 //  Update Cow
-const updateCow = async (id: string) => {
-  const result = await Cow.findByIdAndUpdate(id);
+const updateCow = async (
+  id: string,
+  payload: Partial<ICow>
+): Promise<ICow | null> => {
+  const result = await Cow.findByIdAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
   return result;
 };
 
 // Delete Cow
-const deleteCow = async (id: string) => {
+const deleteCow = async (id: string): Promise<ICow | null> => {
   const result = await Cow.findByIdAndDelete(id);
   return result;
 };
