@@ -1,3 +1,5 @@
+import { SortOrder } from 'mongoose';
+import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/paginations';
 import { ICow } from './cow.interfaces';
@@ -12,9 +14,19 @@ const createCows = async (cow: ICow): Promise<ICow | null> => {
 const getAllCows = async (
   paginationOptions: IPaginationOptions
 ): Promise<IGenericResponse<ICow[]>> => {
-  const { page = 1, limit = 10 } = paginationOptions;
-  const skip = (page - 1) * limit;
-  const result = await Cow.find().sort().skip(skip).limit(limit);
+  const { page, limit, skip, sortBy, sortOrder } =
+    paginationHelpers.calculatePagination(paginationOptions);
+
+  const sortConditions: { [key: string]: SortOrder } = {};
+
+  if (sortBy && sortOrder) {
+    sortConditions[sortBy] = sortOrder;
+  }
+  //  const whereConditions =
+  //    andConditions.length > 0 ? { $and: andConditions } : {};
+
+  //
+  const result = await Cow.find().sort(sortConditions).skip(skip).limit(limit);
 
   const total = await Cow.countDocuments();
   return {
