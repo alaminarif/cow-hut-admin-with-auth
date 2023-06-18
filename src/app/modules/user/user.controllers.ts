@@ -5,22 +5,9 @@ import httpStatus from 'http-status';
 import { UserServices } from './user.services';
 import { IUser } from './user.interfaces';
 
-const createUser = catchAsync(async (req: Request, res: Response) => {
-  const user = req.body;
-
-  const result = await UserServices.createUsers(user);
-
-  sendResponse<IUser>(res, {
-    success: true,
-    statusCode: httpStatus.OK,
-    message: 'user created successfully  ',
-    data: result,
-  });
-});
-
 // get uses
-const getUsers = catchAsync(async (req: Request, res: Response) => {
-  const result = await UserServices.getUsers();
+const getAllUsers = catchAsync(async (req: Request, res: Response) => {
+  const result = await UserServices.getAllUsers();
   sendResponse<IUser[]>(res, {
     success: true,
     statusCode: httpStatus.OK,
@@ -44,7 +31,8 @@ const getSingleUser = catchAsync(async (req: Request, res: Response) => {
 //  update user
 const updateUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await UserServices.getSingleUser(id);
+  const updateData = req.body;
+  const result = await UserServices.updateUser(id, updateData);
   sendResponse<IUser>(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -65,8 +53,7 @@ const deleteUser = catchAsync(async (req: Request, res: Response) => {
   });
 });
 export const UserController = {
-  createUser,
-  getUsers,
+  getAllUsers,
   getSingleUser,
   updateUser,
   deleteUser,

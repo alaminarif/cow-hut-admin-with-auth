@@ -4,6 +4,8 @@ import httpStatus from 'http-status';
 import sendResponse from '../../../share/sendResponse';
 import { CowServices } from './cow.services';
 import { ICow } from './cow.interfaces';
+import pick from '../../../share/pick';
+import { paginationFields } from '../../../constants/paginations';
 // import { ICow } from './cow.interfaces';
 
 const createCow = catchAsync(async (req: Request, res: Response) => {
@@ -18,14 +20,18 @@ const createCow = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-// get cow
-const getCows = catchAsync(async (req: Request, res: Response) => {
-  const result = await CowServices.getCows();
+const getAllCows = catchAsync(async (req: Request, res: Response) => {
+  const paginationOptions = pick(req.query, paginationFields);
+  console.log(paginationOptions);
+  // get cow
+  //
+  const result = await CowServices.getAllCows(paginationOptions);
   sendResponse<ICow[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'cow retrieved successfully  ',
-    data: result,
+    meta: result.meta,
+    data: result.data,
   });
 });
 
@@ -68,7 +74,7 @@ const deleteCow = catchAsync(async (req: Request, res: Response) => {
 
 export const CowControllers = {
   createCow,
-  getCows,
+  getAllCows,
   getSingleCow,
   updateCow,
   deleteCow,

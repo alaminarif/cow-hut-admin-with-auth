@@ -1,0 +1,2 @@
+Sun Jun 18 2023  10:9:38 [right meow!] error: failed to database:  querySrv ECONNREFUSED _mongodb._tcp.cluster0.ixcymbh.mongodb.net
+Sun Jun 18 2023  10:32:35 [right meow!] error: global Error Handler: Unexpected token } in JSON at position 87

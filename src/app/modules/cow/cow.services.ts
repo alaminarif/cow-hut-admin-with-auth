@@ -1,3 +1,5 @@
+import { IGenericResponse } from '../../../interfaces/common';
+import { IPaginationOptions } from '../../../interfaces/paginations';
 import { ICow } from './cow.interfaces';
 import Cow from './cow.model';
 
@@ -7,9 +9,22 @@ const createCows = async (cow: ICow): Promise<ICow | null> => {
   return result;
 };
 // get cow
-const getCows = async () => {
-  const result = await Cow.find();
-  return result;
+const getAllCows = async (
+  paginationOptions: IPaginationOptions
+): Promise<IGenericResponse<ICow[]>> => {
+  const { page = 1, limit = 10 } = paginationOptions;
+  const skip = (page - 1) * limit;
+  const result = await Cow.find().sort().skip(skip).limit(limit);
+
+  const total = await Cow.countDocuments();
+  return {
+    meta: {
+      page,
+      limit,
+      total,
+    },
+    data: result,
+  };
 };
 
 // get Single Cow
@@ -36,7 +51,7 @@ const deleteCow = async (id: string): Promise<ICow | null> => {
 };
 export const CowServices = {
   createCows,
-  getCows,
+  getAllCows,
   getSingleCow,
   updateCow,
   deleteCow,

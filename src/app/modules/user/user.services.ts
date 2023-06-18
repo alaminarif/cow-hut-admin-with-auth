@@ -1,12 +1,7 @@
 import { IUser } from './user.interfaces';
 import { User } from './user.model';
 
-const createUsers = async (user: IUser): Promise<IUser | null> => {
-  const result = await User.create(user);
-  return result;
-};
-
-const getUsers = async () => {
+const getAllUsers = async () => {
   const result = await User.find({});
   return result;
 };
@@ -16,8 +11,13 @@ const getSingleUser = async (id: string): Promise<IUser | null> => {
   return result;
 };
 
-const updateUser = async (id: string): Promise<IUser | null> => {
-  const result = await User.findByIdAndUpdate(id);
+const updateUser = async (
+  id: string,
+  payload: Partial<IUser>
+): Promise<IUser | null> => {
+  const result = await User.findByIdAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
   return result;
 };
 const deleteUser = async (id: string): Promise<IUser | null> => {
@@ -25,8 +25,7 @@ const deleteUser = async (id: string): Promise<IUser | null> => {
   return result;
 };
 export const UserServices = {
-  createUsers,
-  getUsers,
+  getAllUsers,
   getSingleUser,
   updateUser,
   deleteUser,

@@ -74,6 +74,26 @@
             "date": 1687057349216,
             "name": "D:\\Coding\\Assignment\\level-two\\digital-cow-hut\\logs\\winston\\errors\\uni-2023-18-06-09-error.log",
             "hash": "82ec3c4308faa40ac7fbaaeaeea73fedd39b4a0cabd6152697019e4b549cacf8"
+        },
+        {
+            "date": 1687061378458,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow-hut\\logs\\winston\\errors\\uni-2023-18-06-10-error.log",
+            "hash": "76abde52fb8ef4309f57577dac8f8ef0cb23e00dfde44d7e7e6915c6ca052a81"
+        },
+        {
+            "date": 1687067501852,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow-hut\\logs\\winston\\errors\\uni-2023-18-06-11-error.log",
+            "hash": "02aaa602fd402e9517958d39600598dfa0759988986d8fd2192bee3c68dffe2a"
+        },
+        {
+            "date": 1687068008426,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow-hut\\logs\\winston\\errors\\uni-2023-18-06-12-error.log",
+            "hash": "45ec83f051124f6a20e3a5ef346b3f3fd1b2b4f5472c2d844091230601decb21"
+        },
+        {
+            "date": 1687076080138,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow-hut\\logs\\winston\\errors\\uni-2023-18-06-14-error.log",
+            "hash": "3003cbe0190ce316ba118b2c49dc81f96be01d358067f9f3afea3380b6c43ea4"
         }
     ],
     "hashType": "sha256"

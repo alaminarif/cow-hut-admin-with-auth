@@ -7,5 +7,5 @@ router.post('/', CowControllers.createCow);
 router.get('/:id', CowControllers.getSingleCow);
 router.patch('/:id', CowControllers.updateCow);
 router.delete('/:id', CowControllers.deleteCow);
-router.get('/', CowControllers.getCows);
+router.get('/', CowControllers.getAllCows);
 export const cowRoutes = router;
