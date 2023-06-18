@@ -18,3 +18,6 @@ export const cowBreed = [
   'Tharparkar',
   'Kankrej',
 ];
+
+export const cowFilterableFields = ['location'];
+export const cowSearchableFields = ['location', 'breed', ' category'];

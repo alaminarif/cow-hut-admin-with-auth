@@ -6,6 +6,7 @@ import { CowServices } from './cow.services';
 import { ICow } from './cow.interfaces';
 import pick from '../../../share/pick';
 import { paginationFields } from '../../../constants/paginations';
+import { cowFilterableFields } from './cow.constant';
 // import { ICow } from './cow.interfaces';
 
 const createCow = catchAsync(async (req: Request, res: Response) => {
@@ -21,11 +22,12 @@ const createCow = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getAllCows = catchAsync(async (req: Request, res: Response) => {
+  const filters = pick(req.query, cowFilterableFields);
   const paginationOptions = pick(req.query, paginationFields);
   console.log(paginationOptions);
   // get cow
   //
-  const result = await CowServices.getAllCows(paginationOptions);
+  const result = await CowServices.getAllCows(filters, paginationOptions);
   sendResponse<ICow[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
