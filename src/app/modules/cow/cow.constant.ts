@@ -10,6 +10,8 @@ export const cowLocation = [
 ];
 
 export const cowLabel = ['for sale', 'sold out'];
+
+export const cowCategory = ['Dairy', 'Beef', 'DualPurpose'];
 // export const cowBreed = [
 //   'Brahman',
 //   'Nellore',
@@ -20,6 +22,11 @@ export const cowLabel = ['for sale', 'sold out'];
 //   'Kankrej',
 // ];
 
-export const cowFilterableFields = ['location'];
-export const cowSearchableFields = ['location', 'breed', ' category'];
-export const priceFields = ['price'];
+export const cowSearchableFields = ['location', 'breed', 'category'];
+
+export const cowFilterableFields = [
+  'searchTerm',
+  'location',
+  'minPrice',
+  'maxPrice',
+];

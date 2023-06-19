@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 import { CowModel, ICow } from './cow.interfaces';
-import { cowLabel, cowLocation } from './cow.constant';
+import { cowCategory, cowLabel, cowLocation } from './cow.constant';
 
 const cowSchema = new Schema<ICow>(
   {
@@ -36,6 +36,7 @@ const cowSchema = new Schema<ICow>(
     },
     category: {
       type: String,
+      enum: cowCategory,
       required: true,
     },
     seller: {
@@ -47,14 +48,6 @@ const cowSchema = new Schema<ICow>(
     versionKey: false,
   }
 );
-
-// cowSchema.pre('save', async function () {
-//   let label = 0;
-//   const isExsit = await Cow.findOne({ label: this.seller });
-//   if (isExsit) {
-//     label = 10;
-//   }
-// });
 
 const Cow = model<ICow, CowModel>('Cow', cowSchema);
 
