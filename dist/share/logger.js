@@ -1,9 +1,9 @@
+"use strict";
 // /* eslint-disable no-undef */
 // import { createLogger, format, transports } from 'winston'
 // const { combine, timestamp, label, printf } = format
 // import DailyRotateFile from 'winston-daily-rotate-file'
 // import path from 'path'
-
 // // custom format
 // const myFormat = printf(({ level, message, label, timestamp }) => {
 //   const date = new Date(timestamp)
@@ -32,11 +32,9 @@
 //     }),
 //   ],
 // })
-
 // const errorLogger = createLogger({
 //   level: 'error',
 //   format: combine(label({ label: 'right meow!' }), timestamp(), myFormat),
-
 //   transports: [
 //     new transports.Console(),
 //     new DailyRotateFile({

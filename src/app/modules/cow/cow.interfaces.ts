@@ -25,7 +25,7 @@ export type ICow = {
   age: number;
   price: number;
   location: ICowLocation;
-  breed: ICowBreed;
+  breed: string;
   weight: string;
   label: ILabel;
   category: string;

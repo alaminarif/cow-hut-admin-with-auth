@@ -10,13 +10,13 @@ import handleValidationZodError from '../../errors/handleValidationZodError';
 import { ZodError } from 'zod';
 import ApiError from '../../errors/ApiError';
 import config from '../../config';
-import { errorLogger } from '../../share/logger';
+// import { errorLogger } from '../../share/logger';
 import handleCastError from '../../errors/handleCastError';
 
 const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
   config.env === 'development'
     ? console.log('Error Handler: ', error)
-    : errorLogger.error('global Error Handler:', error);
+    : console.log('global Error Handler:', error);
 
   let statusCode = 500;
   let message = 'Something went wrong !';

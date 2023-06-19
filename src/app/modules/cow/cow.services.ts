@@ -16,9 +16,9 @@ const getAllCows = async (
   filters: ICowFilters,
   paginationOptions: IPaginationOptions
 ): Promise<IGenericResponse<ICow[]>> => {
-  const { searchTerm, ...filtersData } = filters;
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelpers.calculatePagination(paginationOptions);
+  const { searchTerm, ...filtersData } = filters;
 
   const andConditions = [];
 
@@ -40,6 +40,45 @@ const getAllCows = async (
       })),
     });
   }
+
+  // const { searchTerm, minPrice, maxPrice, ...filtersData } = filters;
+
+  // const andConditions = [];
+  // const hasLength =
+  //   searchTerm ||
+  //   minPrice !== undefined ||
+  //   maxPrice !== undefined ||
+  //   Object.keys(filters).length > 0;
+
+  // if (searchTerm) {
+  //   andConditions.push({
+  //     $or: cowSearchableFields.map(field => ({
+  //       [field]: {
+  //         $regex: searchTerm,
+  //         $options: 'i',
+  //       },
+  //     })),
+  //   });
+  // }
+
+  // if (minPrice !== undefined || maxPrice !== undefined) {
+  //   const priceCondition: { $gte?: number; $lte?: number } = {};
+  //   if (minPrice !== undefined) {
+  //     priceCondition.$gte = minPrice;
+  //   }
+  //   if (maxPrice !== undefined) {
+  //     priceCondition.$lte = maxPrice;
+  //   }
+  //   andConditions.push({ price: priceCondition });
+  // }
+
+  // if (Object.keys(filtersData).length) {
+  //   andConditions.push({
+  //     $and: Object.entries(filtersData).map(([field, value]) => ({
+  //       [field]: value,
+  //     })),
+  //   });
+  // }
 
   const sortConditions: { [key: string]: SortOrder } = {};
 
@@ -95,3 +134,45 @@ export const CowServices = {
   updateCow,
   deleteCow,
 };
+
+/*
+const { searchTerm, minPrice, maxPrice, ...filtersData } = filters;
+
+    const andConditions = [];
+    const hasLength =
+        searchTerm ||
+        minPrice !== undefined ||
+        maxPrice !== undefined ||
+        Object.keys(filters).length > 0;
+
+    if (searchTerm) {
+        andConditions.push({
+            $or: cowSearchableFields.map((field) => ({
+                [field]: {
+                    $regex: searchTerm,
+                    $options: 'i',
+                },
+            })),
+        });
+    }
+
+    if (minPrice !== undefined || maxPrice !== undefined) {
+        const priceCondition: { $gte?: number; $lte?: number } = {};
+        if (minPrice !== undefined) {
+            priceCondition.$gte = minPrice;
+        }
+        if (maxPrice !== undefined) {
+            priceCondition.$lte = maxPrice;
+        }
+        andConditions.push({ price: priceCondition });
+    }
+
+    if (Object.keys(filtersData).length) {
+        andConditions.push({
+            $and: Object.entries(filtersData).map(([field, value]) => ({
+                [field]: value,
+            })),
+        });
+    }
+
+*/

@@ -49,4 +49,16 @@ const userSchema = new Schema<IUser>(
   }
 );
 
+// userSchema.pre('save', async function (next) {
+//   if (this.role === 'buyer') {
+//     this.income = 0;
+//   }
+//   if (this.role === 'seller') {
+//     this.budget = 0;
+//     this.income = 0;
+//   }
+
+//   next();
+// });
+
 export const User = model<IUser, UserModel>('User', userSchema);

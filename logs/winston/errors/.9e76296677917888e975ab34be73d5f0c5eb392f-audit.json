@@ -114,6 +114,16 @@
             "date": 1687089625870,
             "name": "D:\\Coding\\Assignment\\level-two\\digital-cow-hut\\logs\\winston\\errors\\uni-2023-18-06-18-error.log",
             "hash": "056081dabd0da4486f11dda817cdb218333c99dcc2e310e07df4af4888bd3c45"
+        },
+        {
+            "date": 1687101783753,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow-hut\\logs\\winston\\errors\\uni-2023-18-06-21-error.log",
+            "hash": "09fa1c8be499cb5878ee61438ebe79bf19e7c5c9baba7b85ffb4956bd1a5e614"
+        },
+        {
+            "date": 1687105231499,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow-hut\\logs\\winston\\errors\\uni-2023-18-06-22-error.log",
+            "hash": "5c9944d5589987c6663d0d9c36a12d1de0475e5bb0865b1be48376b537a9c310"
         }
     ],
     "hashType": "sha256"
