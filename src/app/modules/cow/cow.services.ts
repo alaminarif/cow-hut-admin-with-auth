@@ -16,9 +16,6 @@ const getAllCows = async (
   filters: ICowFilters,
   paginationOptions: IPaginationOptions
 ): Promise<IGenericResponse<ICow[]>> => {
-  const { page, limit, skip, sortBy, sortOrder } =
-    paginationHelpers.calculatePagination(paginationOptions);
-
   // const { searchTerm, ...filtersData } = filters;
 
   // const andConditions = [];
@@ -81,6 +78,9 @@ const getAllCows = async (
     });
   }
 
+  const { page, limit, skip, sortBy, sortOrder } =
+    paginationHelpers.calculatePagination(paginationOptions);
+
   const sortConditions: { [key: string]: SortOrder } = {};
 
   if (sortBy && sortOrder) {
@@ -91,6 +91,7 @@ const getAllCows = async (
 
   //
   const result = await Cow.find(whereConditions)
+    .populate('seller')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);

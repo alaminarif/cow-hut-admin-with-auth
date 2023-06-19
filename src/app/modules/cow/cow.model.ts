@@ -32,7 +32,7 @@ const cowSchema = new Schema<ICow>(
     label: {
       type: String,
       enum: cowLabel,
-      required: true,
+      default: cowLabel[0],
     },
     category: {
       type: String,
@@ -47,6 +47,10 @@ const cowSchema = new Schema<ICow>(
   },
   {
     versionKey: false,
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
   }
 );
 

@@ -12,15 +12,6 @@ export const cowLocation = [
 export const cowLabel = ['for sale', 'sold out'];
 
 export const cowCategory = ['Dairy', 'Beef', 'DualPurpose'];
-// export const cowBreed = [
-//   'Brahman',
-//   'Nellore',
-//   'Sahiwal',
-//   'Gir',
-//   'Indigenous',
-//   'Tharparkar',
-//   'Kankrej',
-// ];
 
 export const cowSearchableFields = ['location', 'breed', 'category'];
 
