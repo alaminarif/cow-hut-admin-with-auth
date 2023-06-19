@@ -12,6 +12,7 @@ const createUsers = async (user: IUser): Promise<IUser | null> => {
   if (user.role === 'buyer') {
     user.income = 0;
   }
+
   const result = await User.create(user);
 
   return result;

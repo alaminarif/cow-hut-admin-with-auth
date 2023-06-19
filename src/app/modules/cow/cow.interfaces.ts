@@ -1,4 +1,4 @@
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 
 export type ICowLocation =
   | 'Dhaka'
@@ -28,9 +28,9 @@ export type ICow = {
   location: ICowLocation;
   breed: string;
   weight: string;
-  label: ILabel;
+  label: ILabel | 'for sale';
   category: ICategory;
-  seller: string;
+  seller: Types.ObjectId;
 };
 
 export type CowModel = Model<ICow, Record<string, unknown>>;
