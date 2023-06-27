@@ -31,25 +31,24 @@ const cowSchema = new mongoose_1.Schema({
     label: {
         type: String,
         enum: cow_constant_1.cowLabel,
-        required: true,
+        default: cow_constant_1.cowLabel[0],
     },
     category: {
         type: String,
+        enum: cow_constant_1.cowCategory,
         required: true,
     },
     seller: {
-        type: String,
+        type: mongoose_1.Schema.Types.ObjectId,
+        ref: 'User',
         required: true,
     },
 }, {
     versionKey: false,
+    timestamps: true,
+    toJSON: {
+        virtuals: true,
+    },
 });
-// cowSchema.pre('save', async function () {
-//   let label = 0;
-//   const isExsit = await Cow.findOne({ label: this.seller });
-//   if (isExsit) {
-//     label = 10;
-//   }
-// });
 const Cow = (0, mongoose_1.model)('Cow', cowSchema);
 exports.default = Cow;

@@ -1,15 +1,15 @@
 import { Schema, model } from 'mongoose';
 import { IUser, UserModel } from './user.interfaces';
 import { userRole } from './user.constant';
-import ApiError from '../../../errors/ApiError';
-import httpStatus from 'http-status';
+// import ApiError from '../../../errors/ApiError';
+// import httpStatus from 'http-status';
 
 const userSchema = new Schema<IUser>(
   {
     phoneNumber: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     role: {
       type: String,
@@ -51,14 +51,14 @@ const userSchema = new Schema<IUser>(
   }
 );
 
-userSchema.pre('save', async function (next) {
-  const isExist = await User.findOne({
-    phoneNumber: this.phoneNumber,
-  });
-  if (isExist) {
-    throw new ApiError(httpStatus.CONFLICT, 'phone number is already exist !');
-  }
-  next();
-});
+// userSchema.pre('save', async function (next) {
+//   const isExist = await User.findOne({
+//     phoneNumber: this.phoneNumber,
+//   });
+//   if (isExist) {
+//     throw new ApiError(httpStatus.CONFLICT, 'phone number is already exist !');
+//   }
+//   next();
+// });
 
 export const User = model<IUser, UserModel>('User', userSchema);

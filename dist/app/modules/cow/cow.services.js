@@ -34,9 +34,32 @@ const createCows = (cow) => __awaiter(void 0, void 0, void 0, function* () {
 });
 // get cow
 const getAllCows = (filters, paginationOptions) => __awaiter(void 0, void 0, void 0, function* () {
-    const { searchTerm } = filters, filtersData = __rest(filters, ["searchTerm"]);
-    const { page, limit, skip, sortBy, sortOrder } = paginationHelper_1.paginationHelpers.calculatePagination(paginationOptions);
+    // const { searchTerm, ...filtersData } = filters;
+    // const andConditions = [];
+    // if (searchTerm) {
+    //   andConditions.push({
+    //     $or: cowSearchableFields.map(field => ({
+    //       [field]: {
+    //         $regex: searchTerm,
+    //         $options: 'i',
+    //       },
+    //     })),
+    //   });
+    // }
+    // if (Object.keys(filtersData).length) {
+    //   andConditions.push({
+    //     $and: Object.entries(filtersData).map(([field, value]) => ({
+    //       [field]: value,
+    //     })),
+    //   });
+    // }
+    const { searchTerm, minPrice, maxPrice } = filters, filtersData = __rest(filters, ["searchTerm", "minPrice", "maxPrice"]);
     const andConditions = [];
+    // const hasLength =
+    //   searchTerm ||
+    //   minPrice !== undefined ||
+    //   maxPrice !== undefined ||
+    //   Object.keys(filters).length > 0;
     if (searchTerm) {
         andConditions.push({
             $or: cow_constant_1.cowSearchableFields.map(field => ({
@@ -47,6 +70,16 @@ const getAllCows = (filters, paginationOptions) => __awaiter(void 0, void 0, voi
             })),
         });
     }
+    if (minPrice !== undefined || maxPrice !== undefined) {
+        const priceCondition = {};
+        if (minPrice !== undefined) {
+            priceCondition.$gte = minPrice;
+        }
+        if (maxPrice !== undefined) {
+            priceCondition.$lte = maxPrice;
+        }
+        andConditions.push({ price: priceCondition });
+    }
     if (Object.keys(filtersData).length) {
         andConditions.push({
             $and: Object.entries(filtersData).map(([field, value]) => ({
@@ -54,6 +87,7 @@ const getAllCows = (filters, paginationOptions) => __awaiter(void 0, void 0, voi
             })),
         });
     }
+    const { page, limit, skip, sortBy, sortOrder } = paginationHelper_1.paginationHelpers.calculatePagination(paginationOptions);
     const sortConditions = {};
     if (sortBy && sortOrder) {
         sortConditions[sortBy] = sortOrder;
@@ -61,6 +95,7 @@ const getAllCows = (filters, paginationOptions) => __awaiter(void 0, void 0, voi
     const whereConditions = andConditions.length > 0 ? { $and: andConditions } : {};
     //
     const result = yield cow_model_1.default.find(whereConditions)
+        .populate('seller')
         .sort(sortConditions)
         .skip(skip)
         .limit(limit);
@@ -98,3 +133,44 @@ exports.CowServices = {
     updateCow,
     deleteCow,
 };
+/*
+const { searchTerm, minPrice, maxPrice, ...filtersData } = filters;
+
+    const andConditions = [];
+    const hasLength =
+        searchTerm ||
+        minPrice !== undefined ||
+        maxPrice !== undefined ||
+        Object.keys(filters).length > 0;
+
+    if (searchTerm) {
+        andConditions.push({
+            $or: cowSearchableFields.map((field) => ({
+                [field]: {
+                    $regex: searchTerm,
+                    $options: 'i',
+                },
+            })),
+        });
+    }
+
+    if (minPrice !== undefined || maxPrice !== undefined) {
+        const priceCondition: { $gte?: number; $lte?: number } = {};
+        if (minPrice !== undefined) {
+            priceCondition.$gte = minPrice;
+        }
+        if (maxPrice !== undefined) {
+            priceCondition.$lte = maxPrice;
+        }
+        andConditions.push({ price: priceCondition });
+    }
+
+    if (Object.keys(filtersData).length) {
+        andConditions.push({
+            $and: Object.entries(filtersData).map(([field, value]) => ({
+                [field]: value,
+            })),
+        });
+    }
+
+*/

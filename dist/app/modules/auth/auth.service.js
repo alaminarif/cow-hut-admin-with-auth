@@ -11,8 +11,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthSevices = void 0;
 const user_model_1 = require("../user/user.model");
-const createUsers = (user) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield user_model_1.User.create(user);
+const createUsers = (payload) => __awaiter(void 0, void 0, void 0, function* () {
+    if (payload.role === 'seller') {
+        payload.budget = 0;
+    }
+    // if (payload.role === 'buyer') {
+    //   payload.income = 0;
+    // }
+    const result = yield user_model_1.User.create(payload);
     return result;
 });
 exports.AuthSevices = {

@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const cow_routes_1 = require("../modules/cow/cow.routes");
 const auth_route_1 = require("../modules/auth/auth.route");
 const user_routes_1 = require("../modules/user/user.routes");
+const order_route_1 = require("../modules/order/order.route");
 const router = express_1.default.Router();
 const moduleRoutes = [
     {
@@ -20,6 +21,10 @@ const moduleRoutes = [
     {
         path: '/cows',
         route: cow_routes_1.cowRoutes,
+    },
+    {
+        path: '/orders',
+        route: order_route_1.orderRoutes,
     },
 ];
 moduleRoutes.forEach(route => router.use(route.path, route.route));
