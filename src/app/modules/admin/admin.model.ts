@@ -77,10 +77,8 @@ AdminSchema.statics.isPasswordMatched = async function (
   return await bcrypt.compare(givenPassword, savedPassword);
 };
 AdminSchema.pre('save', async function (next) {
-  // hashing user password
-  const admin = this;
-  admin.password = await bcrypt.hash(
-    admin.password,
+  this.password = await bcrypt.hash(
+    this.password,
     Number(config.bcrypt_salt_rounds)
   );
   next();

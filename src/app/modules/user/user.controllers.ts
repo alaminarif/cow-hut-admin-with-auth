@@ -7,8 +7,7 @@ import { IUser } from './user.interfaces';
 
 // get uses
 const getAllUsers = catchAsync(async (req: Request, res: Response) => {
-  console.log('heards:', req.headers.cookie);
-  console.log('test admin', req.user);
+  console.log('test admin:', req.user);
 
   const result = await UserServices.getAllUsers();
   sendResponse<IUser[]>(res, {
@@ -57,15 +56,16 @@ const deleteUser = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getMyProfile = catchAsync(async (req: Request, res: Response) => {
-  console.log('test admin', req.user?._id);
+  console.log('test admin', req.user);
 
-  const id = req.user?._id;
-  const result = await UserServices.getMyProfile(id);
+  // const { userId } = req.user;
+
+  // const result = await UserServices.getMyProfile(userId);
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
     message: 'users retrieved successfully  ',
-    data: result,
+    // data: result,
   });
 });
 export const UserController = {

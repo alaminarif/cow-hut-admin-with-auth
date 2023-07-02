@@ -11,7 +11,7 @@ export type IAdmins = {
   _id: Schema.Types.ObjectId;
   phoneNumber: string;
   role: Role;
-  password?: string;
+  password: string;
   name: UserName;
   address: string;
 };
@@ -28,7 +28,7 @@ export type IAdminLoginResponse = {
 
 export type AdminModel = {
   isAdminExist(
-    id: string
+    phoneNumber: string
   ): Promise<Pick<IAdmins, 'phoneNumber' | 'password' | 'role' | '_id'>>;
   isPasswordMatched(
     givenPassword: string,

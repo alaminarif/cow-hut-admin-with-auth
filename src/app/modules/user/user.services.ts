@@ -1,4 +1,3 @@
-import { ObjectId } from 'mongoose';
 import { IUser } from './user.interfaces';
 import { User } from './user.model';
 
@@ -25,8 +24,8 @@ const deleteUser = async (id: string): Promise<IUser | null> => {
   const result = await User.findByIdAndDelete(id);
   return result;
 };
-const getMyProfile = async (id: ObjectId) => {
-  const result = await User.findOne({ _id: id });
+const getMyProfile = async (id: string) => {
+  const result = await User.findById(id);
   return result;
 };
 export const UserServices = {

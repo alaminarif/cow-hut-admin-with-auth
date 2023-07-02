@@ -9,8 +9,9 @@ import handleValidationError from '../../errors/handleValidationError';
 // import { ZodError } from 'zod';
 import ApiError from '../../errors/ApiError';
 import config from '../../config';
-import { errorLogger } from '../../share/logger';
 import handleCastError from '../../errors/handleCastError';
+import handleValidationZodError from '../../errors/handleValidationZodError';
+import { ZodError } from 'zod';
 const globalErrorHandler: ErrorRequestHandler = (
   error,
   req: Request,
@@ -19,7 +20,7 @@ const globalErrorHandler: ErrorRequestHandler = (
 ) => {
   config.env === 'development'
     ? console.log(`🐱‍🏍 globalErrorHandler ~~`, { error })
-    : errorLogger.error(`🐱‍🏍 globalErrorHandler ~~`, error);
+    : console.log(`🐱‍🏍 globalErrorHandler ~~`, error);
 
   let statusCode = 500;
   let message = 'Something went wrong !';
@@ -30,12 +31,11 @@ const globalErrorHandler: ErrorRequestHandler = (
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;
     errorMessages = simplifiedError.errorMessages;
-
-    // else if (error instanceof ZodError) {
-    //   const simplifiedError = handleZodError(error);
-    //   statusCode = simplifiedError.statusCode;
-    //   message = simplifiedError.message;
-    //   errorMessages = simplifiedError.errorMessages;
+  } else if (error instanceof ZodError) {
+    const simplifiedError = handleValidationZodError(error);
+    statusCode = simplifiedError.statusCode;
+    message = simplifiedError.message;
+    errorMessages = simplifiedError.errorMessages;
   } else if (error?.name === 'CastError') {
     const simplifiedError = handleCastError(error);
     statusCode = simplifiedError.statusCode;
@@ -63,13 +63,12 @@ const globalErrorHandler: ErrorRequestHandler = (
         ]
       : [];
   }
-  console.log('status Code', statusCode),
-    res.status(statusCode).json({
-      success: false,
-      message,
-      errorMessages,
-      stack: config.env !== 'production' ? error?.stack : undefined,
-    });
+  res.status(statusCode).json({
+    success: false,
+    message,
+    errorMessages,
+    stack: config.env !== 'production' ? error?.stack : undefined,
+  });
 };
 
 export default globalErrorHandler;

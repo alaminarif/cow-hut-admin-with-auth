@@ -10,7 +10,6 @@ import config from '../../../config';
 const createUser = catchAsync(async (req: Request, res: Response) => {
   const user = req.body;
 
-  console.log(req.cookies, 'cookie');
   const result = await AuthService.createUser(user);
 
   sendResponse<IUser>(res, {
