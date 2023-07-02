@@ -55,9 +55,23 @@ const deleteUser = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+
+const getMyProfile = catchAsync(async (req: Request, res: Response) => {
+  console.log('test admin', req.user?._id);
+
+  const id = req.user?._id;
+  const result = await UserServices.getMyProfile(id);
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'users retrieved successfully  ',
+    data: result,
+  });
+});
 export const UserController = {
   getAllUsers,
   getSingleUser,
   updateUser,
   deleteUser,
+  getMyProfile,
 };
