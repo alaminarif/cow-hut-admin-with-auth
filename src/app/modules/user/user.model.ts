@@ -1,15 +1,19 @@
+/* eslint-disable @typescript-eslint/no-this-alias */
 import { Schema, model } from 'mongoose';
 import { IUser, UserModel } from './user.interfaces';
 import { role } from './user.constant';
 import bcrypt from 'bcrypt';
 import config from '../../../config';
-import { Secret } from 'jsonwebtoken';
 
 // import ApiError from '../../../errors/ApiError';
 // import httpStatus from 'http-status';
 
 const UserSchema = new Schema<IUser>(
   {
+    _id: {
+      type: Schema.Types.ObjectId,
+    },
+
     phoneNumber: {
       type: String,
       required: true,
@@ -58,7 +62,7 @@ const UserSchema = new Schema<IUser>(
 
 UserSchema.statics.isUserExist = async function (
   phoneNumber: string
-): Promise<Pick<IUser, 'phoneNumber' | 'password' | 'role'> | null> {
+): Promise<Pick<IUser, 'phoneNumber' | 'password' | 'role' | '_id'> | null> {
   return await User.findOne(
     { phoneNumber },
     { phoneNumber: 1, password: 1, role: 1, _id: 1 }
@@ -78,7 +82,7 @@ UserSchema.pre('save', async function (next) {
   const user = this;
   user.password = await bcrypt.hash(
     user.password,
-    Number(config.bycrypt_salt_rounds)
+    Number(config.bcrypt_salt_rounds)
   );
   next();
 });

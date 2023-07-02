@@ -49,6 +49,16 @@
             "date": 1688258005912,
             "name": "D:\\Coding\\Assignment\\level-two\\digital-cow--hut-auth\\logs\\winston\\errors\\uni-2023-02-07-06-error.log",
             "hash": "2b5883758f2dc08139a4c5525ac4da32d6d24d370ae550c8786e00fd7825a162"
+        },
+        {
+            "date": 1688260479046,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow--hut-auth\\logs\\winston\\errors\\uni-2023-02-07-07-error.log",
+            "hash": "a97ef059e775c2c6f92a2c86cfb25c3bb8e17cbeaef6e58e295ebbfe0011a22b"
+        },
+        {
+            "date": 1688263251725,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow--hut-auth\\logs\\winston\\errors\\uni-2023-02-07-08-error.log",
+            "hash": "81f762b196156d86e69fec0bf350b8644b5c568b3371e0b7e71e885f6b49c405"
         }
     ],
     "hashType": "sha256"

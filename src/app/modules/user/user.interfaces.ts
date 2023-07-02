@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Model } from 'mongoose';
+import { Model, Schema } from 'mongoose';
 
 export type Role = 'seller' | 'buyer' | 'admin';
 
@@ -8,6 +8,7 @@ export type name = {
   lastName: string;
 };
 export type IUser = {
+  _id: Schema.Types.ObjectId;
   phoneNumber: string;
   role: Role;
   password: string;
@@ -19,7 +20,7 @@ export type IUser = {
 export type UserModel = {
   isUserExist(
     phoneNumber: string
-  ): Promise<Pick<IUser, 'phoneNumber' | 'password' | 'role'>>;
+  ): Promise<Pick<IUser, 'phoneNumber' | 'password' | 'role' | '_id'>>;
   isPasswordMatched(
     givenPassword: string,
     savedPassword: string
