@@ -59,6 +59,11 @@
             "date": 1688263251725,
             "name": "D:\\Coding\\Assignment\\level-two\\digital-cow--hut-auth\\logs\\winston\\errors\\uni-2023-02-07-08-error.log",
             "hash": "81f762b196156d86e69fec0bf350b8644b5c568b3371e0b7e71e885f6b49c405"
+        },
+        {
+            "date": 1688266958164,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow--hut-auth\\logs\\winston\\errors\\uni-2023-02-07-09-error.log",
+            "hash": "fc33cdfc87deca6561d92760639fa18cc3bcaf7c320a211668758faeb98e4748"
         }
     ],
     "hashType": "sha256"
