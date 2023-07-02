@@ -29,15 +29,15 @@ const loginAdmin = async (
     throw new ApiError(httpStatus.UNAUTHORIZED, 'password is incorrect');
   }
 
-  const { _id, phoneNumber: adminPhoneNumber, role } = isAdminExist;
+  const { _id: userId, role } = isAdminExist;
 
   const accessToken = jwtHelpers.createToken(
-    { _id, adminPhoneNumber, role },
+    { userId, role },
     config.jwt.secret as Secret,
     config.jwt.expire_in as string
   );
   const refreshToken = jwtHelpers.createToken(
-    { _id, adminPhoneNumber, role },
+    { userId, role },
     config.jwt.secret as Secret,
     config.jwt.refresh_expire_in as string
   );

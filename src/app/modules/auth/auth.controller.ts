@@ -21,6 +21,7 @@ const createUser = catchAsync(async (req: Request, res: Response) => {
 });
 const loginUser = catchAsync(async (req: Request, res: Response) => {
   const { ...loginData } = req.body;
+  console.log('auth login ', req.user);
 
   const result = await AuthService.loginUser(loginData);
 

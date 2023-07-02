@@ -20,7 +20,7 @@ const createAdmin = catchAsync(async (req: Request, res: Response) => {
 });
 const loginAdmin = catchAsync(async (req: Request, res: Response) => {
   const { ...adminData } = req.body;
-  console.log(req.user);
+  console.log('test admin:', req.user);
 
   const result = await AdminService.loginAdmin(adminData);
 

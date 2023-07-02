@@ -7,7 +7,7 @@ import { IUser } from './user.interfaces';
 
 // get uses
 const getAllUsers = catchAsync(async (req: Request, res: Response) => {
-  console.log('test admin:', req.user);
+  console.log('test user:', req.user);
 
   const result = await UserServices.getAllUsers();
   sendResponse<IUser[]>(res, {
