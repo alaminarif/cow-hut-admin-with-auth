@@ -1,0 +1,50 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\Coding\\Assignment\\level-two\\digital-cow--hut-auth\\logs\\winston\\successes\\.81f8b054bacc9f6ca216ca2e80b87195eb572838-audit.json",
+    "files": [
+        {
+            "date": 1688091153670,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow--hut-auth\\logs\\winston\\successes\\uni-2023-30-06-08-success.log",
+            "hash": "5fedb996a5521bf42b7304ff422e873e3d225b39149bb1ad78c105bec63ffc57"
+        },
+        {
+            "date": 1688098463896,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow--hut-auth\\logs\\winston\\successes\\uni-2023-30-06-10-success.log",
+            "hash": "fa5a01373c9a34382dbf8d3734adc3efe1c008a8383792fa4a1078a5fea0b509"
+        },
+        {
+            "date": 1688179574668,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow--hut-auth\\logs\\winston\\successes\\uni-2023-01-07-08-success.log",
+            "hash": "6912d2c9611452290632ec0ece5e1d1ddcaef2b3f854233942ed86efc3d8c161"
+        },
+        {
+            "date": 1688181002505,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow--hut-auth\\logs\\winston\\successes\\uni-2023-01-07-09-success.log",
+            "hash": "a6cd221e721a30dec891d9a1998870b8558a3007cf2abbc5e81f0aaf3fe26b1e"
+        },
+        {
+            "date": 1688184584565,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow--hut-auth\\logs\\winston\\successes\\uni-2023-01-07-10-success.log",
+            "hash": "f1994ebe9c5a83af2548ce2798034bfcc2f6d039206217694172a95f337db1fc"
+        },
+        {
+            "date": 1688187841140,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow--hut-auth\\logs\\winston\\successes\\uni-2023-01-07-11-success.log",
+            "hash": "cd9a714ed8eabeb0684ac413d67787ff5cb0165830bdfbff4f492d0fbf65097c"
+        },
+        {
+            "date": 1688192175001,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow--hut-auth\\logs\\winston\\successes\\uni-2023-01-07-12-success.log",
+            "hash": "deb34574b1c1b5a590539922358b1bd28ff9f3d305c0a8e91c8852582ccecfbd"
+        },
+        {
+            "date": 1688258005882,
+            "name": "D:\\Coding\\Assignment\\level-two\\digital-cow--hut-auth\\logs\\winston\\successes\\uni-2023-02-07-06-success.log",
+            "hash": "20679d658ce3066e32835370619bcf58b6773c601890112bd668b884277b1913"
+        }
+    ],
+    "hashType": "sha256"
+}

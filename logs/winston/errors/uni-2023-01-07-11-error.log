@@ -1,0 +1,1 @@
+Sat Jul 01 2023  11:48:56 [right meow!] error: 🐱‍🏍 globalErrorHandler ~~ E11000 duplicate key error collection: digital-cow-hut-auth.admins index: phoneNumber_1 dup key: { phoneNumber: "01793911101" }

@@ -1,3 +1,3 @@
-import { IUserRole } from './user.interfaces';
+import { Role } from './user.interfaces';
 
-export const userRole: IUserRole[] = ['seller', 'buyer'];
+export const role: Role[] = ['seller', 'buyer', 'admin'];

@@ -1,7 +1,21 @@
 import express from 'express';
-import { AuthControllers } from './auth.controller';
+import { AuthController } from './auth.controller';
+import { AuthValidation } from './auth.validation';
+import validateRequest from '../../middleware/validateRequest';
 const router = express.Router();
 
-router.post('/signup', AuthControllers.createUser);
+router.post('/signup', AuthController.createUser);
+router.post(
+  '/login',
+  validateRequest(AuthValidation.loginZodSchema),
+  AuthController.loginUser
+);
+router.post(
+  '/refresh-token',
+  validateRequest(AuthValidation.refreshTokenZodSchema),
+  AuthController.refreshToken
+);
+// router.post('/refresh-token', AuthController.);
+// router.post('/refresh-token');
 
 export const AuthRoutes = router;

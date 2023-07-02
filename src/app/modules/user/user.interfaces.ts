@@ -1,19 +1,29 @@
+/* eslint-disable no-unused-vars */
 import { Model } from 'mongoose';
 
-export type IUserRole = 'seller' | 'buyer';
+export type Role = 'seller' | 'buyer' | 'admin';
 
-export type IUserName = {
+export type name = {
   firstName: string;
   lastName: string;
 };
 export type IUser = {
   phoneNumber: string;
-  role: IUserRole;
+  role: Role;
   password: string;
-  name: IUserName;
+  name: name;
   address: string;
   budget: number;
   income: number;
 };
+export type UserModel = {
+  isUserExist(
+    phoneNumber: string
+  ): Promise<Pick<IUser, 'phoneNumber' | 'password' | 'role'>>;
+  isPasswordMatched(
+    givenPassword: string,
+    savedPassword: string
+  ): Promise<boolean>;
+} & Model<IUser>;
 
-export type UserModel = Model<IUser, Record<string, unknown>>;
+// export type UserModel = Model<IUser, Record<string, unknown>>;
