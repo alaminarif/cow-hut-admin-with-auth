@@ -20,14 +20,16 @@ const createAdmin = catchAsync(async (req: Request, res: Response) => {
 });
 const loginAdmin = catchAsync(async (req: Request, res: Response) => {
   const { ...adminData } = req.body;
+  console.log(req.user);
+
+  const result = await AdminService.loginAdmin(adminData);
+
+  const { refreshToken, ...others } = result;
 
   const cookieOptions = {
     secure: true,
     httpOnly: config.env === 'production',
   };
-  const result = await AdminService.loginAdmin(adminData);
-
-  const { refreshToken, ...others } = result;
 
   res.cookie('refreshToken', refreshToken, cookieOptions);
 

@@ -1,4 +1,4 @@
-import { Model } from 'mongoose';
+import { Model, Schema } from 'mongoose';
 import { Role } from '../user/user.interfaces';
 
 /* eslint-disable no-unused-vars */
@@ -8,6 +8,7 @@ export type UserName = {
 };
 
 export type IAdmins = {
+  _id: Schema.Types.ObjectId;
   phoneNumber: string;
   role: Role;
   password?: string;
@@ -28,7 +29,7 @@ export type IAdminLoginResponse = {
 export type AdminModel = {
   isAdminExist(
     id: string
-  ): Promise<Pick<IAdmins, 'phoneNumber' | 'password' | 'role'>>;
+  ): Promise<Pick<IAdmins, 'phoneNumber' | 'password' | 'role' | '_id'>>;
   isPasswordMatched(
     givenPassword: string,
     savedPassword: string

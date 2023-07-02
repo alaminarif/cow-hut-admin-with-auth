@@ -10,9 +10,9 @@ import config from '../../../config';
 
 const UserSchema = new Schema<IUser>(
   {
-    _id: {
-      type: Schema.Types.ObjectId,
-    },
+    // _id: {
+    //   type: Schema.Types.ObjectId,
+    // },
 
     phoneNumber: {
       type: String,
@@ -68,7 +68,7 @@ UserSchema.statics.isUserExist = async function (
 > | null> {
   return await User.findOne(
     { phoneNumber },
-    { phoneNumber: 1, password: 1, role: 1, _id: 1, address: 1 }
+    { phoneNumber: 1, password: 1, role: 1, address: 1, _id: 1 }
   );
 };
 
@@ -79,7 +79,6 @@ UserSchema.statics.isPasswordMatched = async function (
   return await bcrypt.compare(givenPassword, savedPassword);
 };
 
-// User.create() / user.save()
 UserSchema.pre('save', async function (next) {
   // hashing user password
   const user = this;
