@@ -32,8 +32,14 @@ export const getAllOrders = catchAsync(async (req: Request, res: Response) => {
 export const getSingleOrder = catchAsync(
   async (req: Request, res: Response) => {
     const { id } = req.params;
-    const result = await singleOrder(id);
+    // let result = null;
+    // if (req.user?.userId === id) {
 
+    // }
+    // if (req.user?.userId !== id) {
+    //   throw new ApiError(httpStatus.UNAUTHORIZED, 'you not access');
+    // }
+    const result = await singleOrder(id);
     sendResponse<IOrder>(res, {
       statusCode: httpStatus.OK,
       success: true,

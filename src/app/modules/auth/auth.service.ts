@@ -74,9 +74,8 @@ const refreshToken = async (token: string): Promise<IRefreshTokenResponse> => {
 
   const newAccessToken = jwtHelpers.createToken(
     {
-      phoneNumber: isUserExist.phoneNumber,
+      userId: isUserExist._id,
       role: isUserExist.role,
-      address: isUserExist.address,
     },
     config.jwt.secret as Secret,
     config.jwt.expire_in as string
