@@ -16,15 +16,17 @@
 - Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/admins/login (POST)
   User
 - Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/users (GET)
-- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/users/6177a5b87d32123f08d2f5d4 (Single GET)
-- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/users/6177a5b87d32123f08d2f5d4 (PATCH)
-- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/users/6177a5b87d32123f08d2f5d4 (DELETE)
-  Cows
+- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/users/64a2698bfbb071b140015a42 (Single GET)
+- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/users/64a2698bfbb071b140015a42 (PATCH)
+- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/users/64a2698bfbb071b140015a42 (DELETE)
+
+  ## Cows
+
 - Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/cows (POST)
 - Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/cows (GET)
-- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/cows/6177a5b87d32123f08d2f5d4 (Single GET)
-- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/cows/6177a5b87d32123f08d2f5d4 (PATCH)
-- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/cows/6177a5b87d32123f08d2f5d4 (DELETE)
+- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/cows/64a26e4656ecd454ef5ec454 (Single GET)
+- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/cows/64a26e4656ecd454ef5ec454 (PATCH)
+- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/cows/64a26e4656ecd454ef5ec454 (DELETE)
 
 ## Orders
 
@@ -35,12 +37,14 @@
 
 ## Admin
 
--Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/admins/create-admin (POST)
+- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/admins/create-admin (POST)
 
 ## My Profile
 
 - Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/users/my-profile (GET)
 - Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/users/my-profile (PATCH)
-  Order:
-- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/orders/6177a5b87d32123f08d2f5d4 (GET)
-- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/orders/6177a5b87d32123f08d2f5d4 (GET)
+
+  ## Order:
+
+- Route: https://digital-cow-hut-auth-five.vercel.app/api/v1/orders/64a28c72390442df1f472d56
+  (GET)

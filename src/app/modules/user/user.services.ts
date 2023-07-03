@@ -54,7 +54,7 @@ const profoleUpdate = async (
   // dynamically update
   if (name && Object.keys(name).length > 0) {
     Object.keys(name).forEach(key => {
-      const nameKey = `name.${key}` as keyof Partial<IUser>; // `name.fisrtName`
+      const nameKey = `name.${key}` as keyof Partial<IUser>;
       (updateUser as any)[nameKey] = name[key as keyof typeof name];
     });
   }

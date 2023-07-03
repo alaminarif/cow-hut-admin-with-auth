@@ -37,7 +37,6 @@ const UserSchema = new mongoose_1.Schema({
     password: {
         type: String,
         required: true,
-        select: 0,
     },
     name: {
         firstName: {
@@ -67,7 +66,7 @@ const UserSchema = new mongoose_1.Schema({
 });
 UserSchema.statics.isUserExist = function (phoneNumber) {
     return __awaiter(this, void 0, void 0, function* () {
-        return yield exports.User.findOne({ phoneNumber }, { phoneNumber: 1, password: 1, role: 1, address: 1, _id: 1 });
+        return yield exports.User.findOne({ phoneNumber }, { phoneNumber: 1, password: 1, role: 1, _id: 1 });
     });
 };
 UserSchema.statics.isPasswordMatched = function (givenPassword, savedPassword) {

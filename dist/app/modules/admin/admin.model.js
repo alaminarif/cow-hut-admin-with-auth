@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable @typescript-eslint/no-this-alias */
 const mongoose_1 = require("mongoose");
+const config_1 = __importDefault(require("../../../config"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const user_constant_1 = require("../user/user.constant");
 const AdminSchema = new mongoose_1.Schema({
@@ -75,14 +76,11 @@ AdminSchema.statics.isPasswordMatched = function (givenPassword, savedPassword) 
         return yield bcrypt_1.default.compare(givenPassword, savedPassword);
     });
 };
-// AdminSchema.pre('save', async function (next) {
-//   // hashing user password
-//   // const admin = this;
-//   this.password = await bcrypt.hash(
-//     this.password,
-//     Number(config.bcrypt_salt_rounds)
-//   );
-//   next();
-// });
+AdminSchema.pre('save', function (next) {
+    return __awaiter(this, void 0, void 0, function* () {
+        this.password = yield bcrypt_1.default.hash(this.password, Number(config_1.default.bcrypt_salt_rounds));
+        next();
+    });
+});
 const Admin = (0, mongoose_1.model)('Admin', AdminSchema);
 exports.default = Admin;

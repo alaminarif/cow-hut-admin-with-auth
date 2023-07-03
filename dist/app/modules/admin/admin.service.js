@@ -33,9 +33,9 @@ const loginAdmin = (payload) => __awaiter(void 0, void 0, void 0, function* () {
         !(yield (admin_model_1.default === null || admin_model_1.default === void 0 ? void 0 : admin_model_1.default.isPasswordMatched(password, isAdminExist === null || isAdminExist === void 0 ? void 0 : isAdminExist.password)))) {
         throw new ApiError_1.default(http_status_1.default.UNAUTHORIZED, 'password is incorrect');
     }
-    const { _id, phoneNumber: adminPhoneNumber, role } = isAdminExist;
-    const accessToken = jwt_helpers_1.jwtHelpers.createToken({ _id, adminPhoneNumber, role }, config_1.default.jwt.secret, config_1.default.jwt.expire_in);
-    const refreshToken = jwt_helpers_1.jwtHelpers.createToken({ _id, adminPhoneNumber, role }, config_1.default.jwt.secret, config_1.default.jwt.refresh_expire_in);
+    const { _id: userId, role } = isAdminExist;
+    const accessToken = jwt_helpers_1.jwtHelpers.createToken({ userId, role }, config_1.default.jwt.secret, config_1.default.jwt.expire_in);
+    const refreshToken = jwt_helpers_1.jwtHelpers.createToken({ userId, role }, config_1.default.jwt.secret, config_1.default.jwt.refresh_expire_in);
     return {
         accessToken,
         refreshToken,
@@ -56,7 +56,7 @@ const refreshToken = (token) => __awaiter(void 0, void 0, void 0, function* () {
     }
     //generate new token
     const newAccessToken = jwt_helpers_1.jwtHelpers.createToken({
-        phoneNumber: isAdminExist.phoneNumber,
+        userId: isAdminExist._id,
         role: isAdminExist.role,
     }, config_1.default.jwt.secret, config_1.default.jwt.expire_in);
     return {

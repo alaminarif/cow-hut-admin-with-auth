@@ -41,7 +41,7 @@ const createAdmin = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, vo
 }));
 const loginAdmin = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const adminData = __rest(req.body, []);
-    console.log(req.user);
+    console.log('test admin:', req.user);
     const result = yield admin_service_1.AdminService.loginAdmin(adminData);
     const { refreshToken } = result, others = __rest(result, ["refreshToken"]);
     const cookieOptions = {

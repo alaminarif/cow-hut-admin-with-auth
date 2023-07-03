@@ -32,9 +32,9 @@ const createCow = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void
     });
 }));
 const getAllCows = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log();
     const filters = (0, pick_1.default)(req.query, cow_constant_1.cowFilterableFields);
     const paginationOptions = (0, pick_1.default)(req.query, paginations_1.paginationFields);
-    console.log(paginationOptions);
     // get cow
     //
     const result = yield cow_services_1.CowServices.getAllCows(filters, paginationOptions);

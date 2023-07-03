@@ -49,6 +49,12 @@ exports.getAllOrders = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
 }));
 exports.getSingleOrder = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
+    // let result = null;
+    // if (req.user?.userId === id) {
+    // }
+    // if (req.user?.userId !== id) {
+    //   throw new ApiError(httpStatus.UNAUTHORIZED, 'you not access');
+    // }
     const result = yield (0, orders_service_1.singleOrder)(id);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,

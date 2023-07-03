@@ -33,10 +33,9 @@ const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
         throw new ApiError_1.default(http_status_1.default.UNAUTHORIZED, 'Password is incorrect');
     }
     //create access token & refresh token
-    const { _id: userId, role, address } = isUserExist;
-    console.log('is user exist', isUserExist);
-    const accessToken = jwt_helpers_1.jwtHelpers.createToken({ userId, role, address }, config_1.default.jwt.secret, config_1.default.jwt.expire_in);
-    const refreshToken = jwt_helpers_1.jwtHelpers.createToken({ userId, role, address }, config_1.default.jwt.refresh_secret, config_1.default.jwt.refresh_expire_in);
+    const { _id: userId, role } = isUserExist;
+    const accessToken = jwt_helpers_1.jwtHelpers.createToken({ userId, role }, config_1.default.jwt.secret, config_1.default.jwt.expire_in);
+    const refreshToken = jwt_helpers_1.jwtHelpers.createToken({ userId, role }, config_1.default.jwt.refresh_secret, config_1.default.jwt.refresh_expire_in);
     return {
         accessToken,
         refreshToken,
@@ -57,9 +56,8 @@ const refreshToken = (token) => __awaiter(void 0, void 0, void 0, function* () {
     }
     //generate new token
     const newAccessToken = jwt_helpers_1.jwtHelpers.createToken({
-        phoneNumber: isUserExist.phoneNumber,
+        userId: isUserExist._id,
         role: isUserExist.role,
-        address: isUserExist.address,
     }, config_1.default.jwt.secret, config_1.default.jwt.expire_in);
     return {
         accessToken: newAccessToken,
