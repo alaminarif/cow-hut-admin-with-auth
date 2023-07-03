@@ -8,6 +8,7 @@ router.post('/signup', AuthController.createUser);
 router.post(
   '/login',
   validateRequest(AuthValidation.loginZodSchema),
+  // auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.BUYER, ENUM_USER_ROLE.SELLER),
   AuthController.loginUser
 );
 router.post(

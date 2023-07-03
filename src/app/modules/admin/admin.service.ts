@@ -69,7 +69,7 @@ const refreshToken = async (token: string) => {
 
   const newAccessToken = jwtHelpers.createToken(
     {
-      phoneNumber: isAdminExist.phoneNumber,
+      userId: isAdminExist._id,
       role: isAdminExist.role,
     },
     config.jwt.secret as Secret,

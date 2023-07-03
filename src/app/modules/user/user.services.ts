@@ -24,11 +24,18 @@ const deleteUser = async (id: string): Promise<IUser | null> => {
   const result = await User.findByIdAndDelete(id);
   return result;
 };
-const getMyProfile = async (id: string) => {
-  const result = await User.findById(id);
+const getMyProfile = async (
+  userId: string | undefined
+): Promise<IUser | null> => {
+  console.log('my profile', userId);
+
+  // const isUserExist = await User.isUserExist(userId);
+  // console.log('isUserExist: ', isUserExist);
+
+  const result = await User.findById({ _id: userId });
   return result;
 };
-export const UserServices = {
+export const UserService = {
   getAllUsers,
   getSingleUser,
   updateUser,

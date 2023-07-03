@@ -2,14 +2,14 @@ import { Request, Response } from 'express';
 import catchAsync from '../../../share/catchAsync';
 import sendResponse from '../../../share/sendResponse';
 import httpStatus from 'http-status';
-import { UserServices } from './user.services';
+import { UserService } from './user.services';
 import { IUser } from './user.interfaces';
 
 // get uses
 const getAllUsers = catchAsync(async (req: Request, res: Response) => {
   console.log('test user:', req.user);
 
-  const result = await UserServices.getAllUsers();
+  const result = await UserService.getAllUsers();
   sendResponse<IUser[]>(res, {
     success: true,
     statusCode: httpStatus.OK,
@@ -21,7 +21,7 @@ const getAllUsers = catchAsync(async (req: Request, res: Response) => {
 //  get single user
 const getSingleUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await UserServices.getSingleUser(id);
+  const result = await UserService.getSingleUser(id);
   sendResponse<IUser>(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -34,7 +34,7 @@ const getSingleUser = catchAsync(async (req: Request, res: Response) => {
 const updateUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
   const updateData = req.body;
-  const result = await UserServices.updateUser(id, updateData);
+  const result = await UserService.updateUser(id, updateData);
   sendResponse<IUser>(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -46,7 +46,7 @@ const updateUser = catchAsync(async (req: Request, res: Response) => {
 //  delete user
 const deleteUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await UserServices.deleteUser(id);
+  const result = await UserService.deleteUser(id);
   sendResponse<IUser>(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -56,16 +56,17 @@ const deleteUser = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getMyProfile = catchAsync(async (req: Request, res: Response) => {
-  console.log('test admin', req.user);
+  console.log('test profile controller', req.user?.userId);
 
-  // const { userId } = req.user;
+  const userId = req.user?.userId;
 
-  // const result = await UserServices.getMyProfile(userId);
+  const result = await UserService.getMyProfile(userId);
+
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
     message: 'users retrieved successfully  ',
-    // data: result,
+    data: result,
   });
 });
 export const UserController = {
