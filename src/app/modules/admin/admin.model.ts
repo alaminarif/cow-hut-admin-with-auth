@@ -43,23 +43,9 @@ const AdminSchema = new Schema<IAdmins, AdminModel>(
     timestamps: true,
     toJSON: {
       virtuals: true,
-      // transform: function (doc, ret) {
-      //   delete ret.password; // Exclude password from the JSON response
-      // },
     },
   }
 );
-
-// AdminSchema.pre<IAdmins>('save', function (next) {
-//   if (this.isModified('password')) {
-//     // Only hash the password if it has been modified (new or updated)
-//     // Add your password hashing logic here
-//     // For example, you can use bcrypt or any other password hashing library
-//     // and update the hashed password value on `this.password`
-//     this.password = hashPassword(this.password);
-//   }
-//   next();
-// });
 
 AdminSchema.statics.isAdminExist = async function (
   phoneNumber: string

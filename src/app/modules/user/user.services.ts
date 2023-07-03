@@ -29,11 +29,6 @@ const deleteUser = async (id: string): Promise<IUser | null> => {
 const getMyProfile = async (
   userId: string | undefined
 ): Promise<IUser | null> => {
-  console.log('my profile', userId);
-
-  // const isUserExist = await User.isUserExist(userId);
-  // console.log('isUserExist: ', isUserExist);
-
   const result = await User.findById({ _id: userId });
   return result;
 };
